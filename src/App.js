@@ -1,4 +1,5 @@
 import PageIniciarSesion from './components/organisms/IniciarSesion/PageIniciarSesion';
+
 import { PageCreateForm } from './PageCreateForm';
 import { PageRevision } from './components/organisms/Direccion/PageRevision';
 import { PageMyForm } from './PageMyForm';
@@ -8,6 +9,7 @@ import { PageVerEquivalencia } from './components/organisms/Alumno/PageVerEquiva
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import PageRegistro from './components/organisms/IniciarSesion/PageRegistro';
 
 function App() {
     const rol = JSON.parse(localStorage.getItem('rol'));
@@ -46,6 +48,11 @@ function App() {
             {rol == null && (
                 <Router>
                     <Route path="/" exact component={PageIniciarSesion} />
+                    <Route
+                        path="/usuario/registro"
+                        exact
+                        component={PageRegistro}
+                    />
                 </Router>
             )}
 

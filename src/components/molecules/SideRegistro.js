@@ -3,6 +3,7 @@ import Registro from '../Registro';
 import { Titulos } from '../atoms/Title/Titulos';
 import { BotonMUI } from '../atoms/Button/BotonMUI';
 import { Grid } from '@mui/material';
+import PageRegistro from '../organisms/IniciarSesion/PageRegistro';
 
 const SideRegistro = styled(Grid)`
     background: #009673;
@@ -18,7 +19,7 @@ const SideRegistro = styled(Grid)`
 
 const Register = () => {
     const onClick = (e) => {
-        return <Registro />;
+        window.location.href = '/usuario/registro';
     };
 
     return (
