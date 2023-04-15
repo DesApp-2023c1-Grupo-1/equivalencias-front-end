@@ -11,7 +11,9 @@ import { Grid, styled } from '@mui/material';
 import { Formulario } from '../atoms/Formulario/Formulario';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getUsuarios } from '../../services/usuario_service';
+import { getUsuarios, postUsuario } from '../../services/usuario_service';
+
+import bcrypt from 'bcryptjs';
 
 const FormularioRegistro = () => {
     const [dni, setDni] = useState(null);
@@ -29,6 +31,45 @@ const FormularioRegistro = () => {
     }, []);
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const hashedPassword = bcrypt.hashSync(password, 10);
+
+        console.log(dni);
+        console.log(password);
+        console.log(hashedPassword);
+        /**
+         *    Del BACK-END:
+         *
+         *    const datosUsuario = pick(
+         *      createaddUsuario, [
+         *          'id','dni','nombre','apellido','email','discord','telefono','rol','password'
+         *      ]);
+         */
+        const usuario = usuarios.find((usuario) => usuario.dni === dni);
+
+        if (usuario) {
+            alert('DNI ya registrado');
+        } else {
+            let usuario = {
+                dni: dni,
+                password: hashedPassword,
+                nombre: 'Pablo',
+                apellido: 'ORIGLIA',
+                email: 'poriglia@email.com',
+                discord: '@poriglia',
+                telefono: '12345678',
+                rol: 'alumno'
+            };
+            console.log(usuario);
+            alert(usuario);
+
+            postUsuario(usuario);
+            // TODO: Mensaje de usuario registrado con éxito
+            window.location.href = '/';
+        }
+
+        /*
         e.preventDefault();
         console.log(usuarios);
         const usuario = usuarios.find(
@@ -54,16 +95,17 @@ const FormularioRegistro = () => {
         } else {
             alert('Usuario o contraseña incorrectos');
         }
+        */
     };
 
     return (
         <FormularioMainRegistro>
             <TituloBienvenida>
                 <Titulos titulogrande titulomarginbottom component="h2">
-                    ¡Bienvenido/a!
+                    Registro
                 </Titulos>
                 <Titulos titulochico titulolight component="h2">
-                    Regitrarse
+                    Nuevo usuario
                 </Titulos>
             </TituloBienvenida>
 
@@ -100,12 +142,6 @@ const FormularioRegistro = () => {
                         </ContenedorInputs>
                     </div>
 
-                    <OlvidastePassword>
-                        <OlvidastePasswordLink href="https://www.google.com.ar">
-                            ¿Olvidaste tu contraseña?
-                        </OlvidastePasswordLink>
-                    </OlvidastePassword>
-
                     <LineaSeparacion></LineaSeparacion>
 
                     <Grid>
@@ -115,7 +151,7 @@ const FormularioRegistro = () => {
                             disableElevation
                             type="submit"
                         >
-                            Ingresar
+                            Registrarse
                         </BotonMUI>
                     </Grid>
                 </form>
