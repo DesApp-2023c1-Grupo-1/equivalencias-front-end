@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
     const rol = JSON.parse(localStorage.getItem('rol'));
+    console.log('Hola', rol);
     return (
         <>
             {rol == 'alumno' && (
