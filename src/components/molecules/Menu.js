@@ -20,6 +20,7 @@ export default function Menu({ name, paginaPrincipal }) {
     const nombre = JSON.parse(localStorage.getItem('nombre'));
     const apellido = JSON.parse(localStorage.getItem('apellido'));
     const email = JSON.parse(localStorage.getItem('email'));
+    const rol = JSON.parse(localStorage.getItem('rol'));
 
     const [state, setState] = useState({
         left: false
@@ -90,6 +91,26 @@ export default function Menu({ name, paginaPrincipal }) {
             >
                 {email ? <span style={{ color: '#71767b' }}>{email}</span> : ''}
             </Grid>
+
+            <Grid
+                item
+                justifyContent={'flex-start'}
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    padding: '0px 16px',
+                    marginTop: '2px'
+                }}
+            >
+                {localStorage.getItem('rol') ? (
+                    <span style={{ color: '#71767b' }}>
+                        Rol: {localStorage.getItem('rol')}
+                    </span>
+                ) : (
+                    ''
+                )}
+            </Grid>
+
             <List sx={{ marginTop: '8px' }}>
                 <ListItem disablePadding>
                     <ListItemButton component="a" href={paginaPrincipal}>
