@@ -100,13 +100,6 @@ const Header = ({ name, paginaPrincipal, botonSeleccionado }) => {
                             ></Avatar>
                         </Tooltip>
 
-                        {/*<img
-                            src={stringConcat}
-                            alt=""
-                            style={{ borderRadius: '100%' }}
-                            width={'32px'}
-                        />*/}
-
                         <Grid item container sx={{ marginLeft: '40px' }}>
                             <Link to="/" style={{ textDecoration: 'none' }}>
                                 <BotonMUI
