@@ -34,7 +34,9 @@ const CreateForm = () => {
                 anioAprobacion: '',
                 materiaAprobada: '',
                 universidadOrigen: 1, // id de universidad
-                certificado: false
+                certificado: false,
+                /*Agregado*/
+                archivo: null
             }
         ]);
     //Push de esto?
@@ -105,7 +107,9 @@ const CreateForm = () => {
                 anioAprobacion: '',
                 materiaAprobada: '',
                 universidadOrigen: 1, // id de universidad
-                certificado: false
+                certificado: false,
+                /*Agregado*/
+                archivo: null
             }
         ]);
 
@@ -207,7 +211,9 @@ const CreateForm = () => {
                         año_aprobacion: item.anioAprobacion,
                         nombre_materia: item.materiaAprobada,
                         UniversidadOrigenId: 1,
-                        certificado: item.certificado
+                        certificado: item.certificado,
+                        /*Agregado*/
+                        archivo: item.archivo
                     };
                 }),
                 UsuarioId: usuarioId

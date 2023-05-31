@@ -59,8 +59,8 @@ const FileUploader = styled(TextField)`
     width: 50%;
     min-width: 212px;
 
-    input[type='file']::file-selector-button {
-        display: none;
+    /*input[type='file']::file-selector-button {
+        display: none;*/
     }
 `;
 

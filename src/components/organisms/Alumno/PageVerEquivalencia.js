@@ -24,6 +24,7 @@ import { styled } from '@mui/material';
 import { css } from '@mui/styled-engine';
 import { Link } from 'react-router-dom';
 import { config } from '../../../config/config';
+import { ArchivoEquivalencia } from '../../../ArchivoEquivalencia'; /*Agregado*/
 
 const ChipMedium = styled(Chip)`
     ${(props) =>
@@ -671,7 +672,19 @@ const PageVerEquivalencia = () => {
                                                             variant="body1"
                                                             gutterBottom
                                                         >
-                                                            No tiene certificado
+                                                            {/* Agregado */}
+                                                            {materiaAprobada.certificado ? (
+                                                                <p>
+                                                                    Tiene
+                                                                    certificado
+                                                                </p>
+                                                            ) : (
+                                                                <p>
+                                                                    No tiene
+                                                                    certificado
+                                                                </p>
+                                                            )}
+                                                            {/* No tiene certificado */}
                                                         </Typography>
                                                     </Grid>
                                                 </Grid>
@@ -681,7 +694,7 @@ const PageVerEquivalencia = () => {
                                                     container
                                                     xs={12}
                                                     sx={{
-                                                        marginTop: '16px'
+                                                        marginTop: '28px'
                                                     }}
                                                 >
                                                     <Grid
@@ -697,19 +710,29 @@ const PageVerEquivalencia = () => {
                                                                 sm: '16px'
                                                             }}
                                                         >
-                                                            Adjuntar programa de
-                                                            la materia .pdf
+                                                            {/* Agregado */}
+                                                            {materiaAprobada.archivo ? (
+                                                                <p>
+                                                                    Archivo
+                                                                    Adjunto:
+                                                                </p>
+                                                            ) : (
+                                                                <p></p>
+                                                            )}
+                                                            {/* Adjuntar programa de
+                                                            la materia .pdf */}
                                                         </Titulos>
                                                     </Grid>
 
-                                                    <Grid
+                                                    {/* <Grid
                                                         item
                                                         container
                                                         xs={12}
                                                         sx={{
                                                             marginTop: '16px'
                                                         }}
-                                                    >
+                                                    > */}
+                                                    {/*
                                                         <label
                                                             htmlFor="contained-button-file"
                                                             style={{
@@ -727,7 +750,7 @@ const PageVerEquivalencia = () => {
                                                             >
                                                                 Descargar
                                                             </BotonMUI>
-                                                            {/* <IconButton
+                                                            <IconButton
                                             sx={{
                                                 marginRight: '12px'
                                             }}
@@ -736,17 +759,23 @@ const PageVerEquivalencia = () => {
                                             component="span"
                                         >
                                             <AttachFileOutlinedIcon />
-                                        </IconButton> */}
-                                                            {/* <FileUploader
+                                        </IconButton>
+                                                            <FileUploader
                                             id="contained-button-file"
                                             multiple
                                             size="small"
                                             variant="standard"
                                             type="file"
                                             accept="application/pdf, application/vnd.ms-Excel"
-                                        /> */}
-                                                        </label>
-                                                    </Grid>
+                                        />
+                                                        </label>*/}
+                                                    {/*Agregado */}
+                                                    <ArchivoEquivalencia
+                                                        nombreArchivo={
+                                                            materiaAprobada.archivo
+                                                        }
+                                                    ></ArchivoEquivalencia>
+                                                    {/* </Grid> */}
                                                 </Grid>
 
                                                 {/* <AgregarMateriaUniOrigen /> */}

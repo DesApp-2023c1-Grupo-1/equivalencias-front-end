@@ -23,6 +23,7 @@ import { getEquivalencia } from '../../../services/revision';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { config } from '../../../config/config';
+import { ArchivoEquivalencia } from '../../../ArchivoEquivalencia'; /*Agregado*/
 
 const columns = [
     { id: 'desc', label: 'Solicitante', minWidth: 170 },
@@ -624,7 +625,19 @@ const PageRevision = () => {
                                                             variant="body1"
                                                             gutterBottom
                                                         >
-                                                            No tiene certificado
+                                                            {/* Agregado */}
+                                                            {materiaAprobada.certificado ? (
+                                                                <p>
+                                                                    Tiene
+                                                                    certificado
+                                                                </p>
+                                                            ) : (
+                                                                <p>
+                                                                    No tiene
+                                                                    certificado
+                                                                </p>
+                                                            )}
+                                                            {/* No tiene certificado */}
                                                         </Typography>
                                                     </Grid>
                                                 </Grid>
@@ -634,7 +647,7 @@ const PageRevision = () => {
                                                     container
                                                     xs={12}
                                                     sx={{
-                                                        marginTop: '16px'
+                                                        marginTop: '24px'
                                                     }}
                                                 >
                                                     <Grid
@@ -650,26 +663,34 @@ const PageRevision = () => {
                                                                 sm: '16px'
                                                             }}
                                                         >
-                                                            Adjuntar programa de
-                                                            la materia .pdf
+                                                            {/* Agregado */}
+                                                            {materiaAprobada.archivo ? (
+                                                                <p>
+                                                                    Archivo
+                                                                    Adjunto:
+                                                                </p>
+                                                            ) : (
+                                                                <p></p>
+                                                            )}
+                                                            {/* Adjuntar programa de
+                                                            la materia .pdf */}
                                                         </Titulos>
                                                     </Grid>
-
-                                                    <Grid
+                                                    {/* <Grid
                                                         item
                                                         container
                                                         xs={12}
                                                         sx={{
-                                                            marginTop: '16px'
+                                                            marginTop: '10px'
                                                         }}
-                                                    >
-                                                        <label
+                                                    > */}
+                                                    {/* <label
                                                             htmlFor="contained-button-file"
                                                             style={{
                                                                 width: '100%'
                                                             }}
-                                                        >
-                                                            <BotonMUI
+                                                        > */}
+                                                    {/* <BotonMUI
                                                                 sx={{
                                                                     marginRight:
                                                                         '12px'
@@ -679,8 +700,8 @@ const PageRevision = () => {
                                                                 component="span"
                                                             >
                                                                 Descargar
-                                                            </BotonMUI>
-                                                            {/* <IconButton
+                                                            </BotonMUI> */}
+                                                    {/* <IconButton
                                             sx={{
                                                 marginRight: '12px'
                                             }}
@@ -690,7 +711,7 @@ const PageRevision = () => {
                                         >
                                             <AttachFileOutlinedIcon />
                                         </IconButton> */}
-                                                            {/* <FileUploader
+                                                    {/* <FileUploader
                                             id="contained-button-file"
                                             multiple
                                             size="small"
@@ -698,8 +719,16 @@ const PageRevision = () => {
                                             type="file"
                                             accept="application/pdf, application/vnd.ms-Excel"
                                         /> */}
-                                                        </label>
-                                                    </Grid>
+                                                    {/* </label> */}
+                                                    <p>
+                                                        desde director revision
+                                                    </p>
+                                                    <ArchivoEquivalencia
+                                                        nombreArchivo={
+                                                            materiaAprobada.archivo
+                                                        }
+                                                    ></ArchivoEquivalencia>
+                                                    {/* </Grid> */}
                                                 </Grid>
 
                                                 {/* <AgregarMateriaUniOrigen /> */}
