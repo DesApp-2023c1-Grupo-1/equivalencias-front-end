@@ -647,7 +647,7 @@ const PageRevision = () => {
                                                     container
                                                     xs={12}
                                                     sx={{
-                                                        marginTop: '24px'
+                                                        marginTop: '35px'
                                                     }}
                                                 >
                                                     <Grid
@@ -720,11 +720,8 @@ const PageRevision = () => {
                                             accept="application/pdf, application/vnd.ms-Excel"
                                         /> */}
                                                     {/* </label> */}
-                                                    <p>
-                                                        desde director revision
-                                                    </p>
                                                     <ArchivoEquivalencia
-                                                        nombreArchivo={
+                                                        nArchivo={
                                                             materiaAprobada.archivo
                                                         }
                                                     ></ArchivoEquivalencia>

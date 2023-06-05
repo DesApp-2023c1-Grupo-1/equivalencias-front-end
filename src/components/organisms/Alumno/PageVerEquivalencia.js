@@ -774,6 +774,10 @@ const PageVerEquivalencia = () => {
                                                         nombreArchivo={
                                                             materiaAprobada.archivo
                                                         }
+                                                        estado={equiv.estado}
+                                                        materiaAprobada={
+                                                            materiaAprobada
+                                                        }
                                                     ></ArchivoEquivalencia>
                                                     {/* </Grid> */}
                                                 </Grid>

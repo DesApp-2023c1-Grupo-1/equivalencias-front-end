@@ -141,7 +141,7 @@ const CreateForm = () => {
         // console.log(event.target.name);
         // console.log(formValueArray);
         const indiceMateria = materias.findIndex((e) => e.key === key);
-        console.log(materias);
+        console.log('Materias' + materias);
         console.log(key);
         console.log(indiceMateria);
         console.log(materias[indiceMateria]);
@@ -213,6 +213,9 @@ const CreateForm = () => {
                         UniversidadOrigenId: 1,
                         certificado: item.certificado,
                         /*Agregado*/
+                        // archivo: item.archivo == ''
+                        //         ? null
+                        //         : item.archivo,
                         archivo: item.archivo
                     };
                 }),

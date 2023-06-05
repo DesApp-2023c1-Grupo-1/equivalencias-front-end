@@ -14,7 +14,7 @@ import { BotonMUI } from './components/atoms/Button/BotonMUI';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
-import { ArchivoEquivalencia } from './ArchivoEquivalencia'; /*Agregado*/
+import { ArchivoAltaEquivalencia } from './ArchivoAltaEquivalencia'; /*Agregado*/
 
 const esNotaCorrecta = (nota) => {
     return nota == '' || nota == null || (nota >= 4 && nota <= 10);
@@ -271,25 +271,12 @@ const ExtrasUniOrigen = ({
                     </label>
                 </Grid> */}
 
-                <p>DESDE /SRC/EXTRAS UNI ORIGEN</p>
-                <StandardInput
-                    key={formValueArray.key}
-                    required
-                    name="nombrearchivo"
-                    size="small"
-                    label="Nombre del archivo"
-                    variant="outlined"
-                    type="string"
-                    value={formValueArray.archivo}
-                    onChange={(event) => handleChangeArray(event, key2)}
-                />
-                <ArchivoEquivalencia>
+                <ArchivoAltaEquivalencia
                     handleChangeArray={handleChangeArray}
                     formValueArray={formValueArray}
                     key2={key2}
-                    nombreArchivo={formValueArray.archivo}
-                    {/* onChange={(event) => handleChangeArray(event, key2)} */}
-                </ArchivoEquivalencia>
+                    nArchivo={formValueArray.archivo}
+                ></ArchivoAltaEquivalencia>
             </Grid>
             {/* <AgregarMateriaUniOrigen /> */}
         </Grid>
