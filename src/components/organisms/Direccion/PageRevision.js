@@ -724,6 +724,9 @@ const PageRevision = () => {
                                                         nArchivo={
                                                             materiaAprobada.archivo
                                                         }
+                                                        estado={
+                                                            formValue.estado
+                                                        }
                                                     ></ArchivoEquivalencia>
                                                     {/* </Grid> */}
                                                 </Grid>

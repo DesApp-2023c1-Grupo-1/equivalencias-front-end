@@ -20,6 +20,8 @@ const ArchivoEquivalencia = ({ estado, nArchivo, materiaAprobada }) => {
         if (nombreArchivo == null) {
             return;
         }
+        console.log('Rol:' + rol);
+        console.log('nArchivo: ' + nArchivo);
 
         fetch('http://localhost:3001/api/archivos/' + nombreArchivo, {
             method: 'GET'
@@ -31,7 +33,7 @@ const ArchivoEquivalencia = ({ estado, nArchivo, materiaAprobada }) => {
                 console.error(err);
             });
         setFileListUpdate(false);
-    }, [fileListUpdate, nombreArchivo]);
+    }, [fileListUpdate, nArchivo, nombreArchivo]);
 
     const handleSelectedFile = (e) => {
         setFile(e.target.files[0]);
@@ -83,9 +85,12 @@ const ArchivoEquivalencia = ({ estado, nArchivo, materiaAprobada }) => {
     return (
         <>
             {/* {(rol == 'directivo' && nombreArchivo != null) && ( */}
-            {/* Si tiene un archivo, y está aprobada o rechazada*/}
             {nombreArchivo != null &&
-                (estado == 'Aceptado' || estado == 'Rechazado') && (
+                (rol == 'directivo' ||
+                    ((estado == 'aceptado' ||
+                        estado == 'Aceptado' ||
+                        estado == 'Rechazado') &&
+                        rol == 'alumno')) && (
                     <Grid sx={{ marginTop: '16px' }}>
                         {[fileList].map((file) => (
                             <Grid
@@ -112,7 +117,8 @@ const ArchivoEquivalencia = ({ estado, nArchivo, materiaAprobada }) => {
                 )}
             <Grid xs={12}>
                 {nombreArchivo != null &&
-                    (estado == 'Falta completar' || estado == 'Pendiente') && (
+                    (estado == 'Falta completar' || estado == 'Pendiente') &&
+                    rol == 'alumno' && (
                         <Grid item container sx={{ marginTop: '16px' }}>
                             <Grid
                                 item
@@ -189,7 +195,6 @@ const ArchivoEquivalencia = ({ estado, nArchivo, materiaAprobada }) => {
                                         backgroundColor: '#f4e4d3',
                                         fontColor: 'white'
                                     }}
-                                    /*Fin Agregado*/
                                 >
                                     Cargar
                                 </BotonMUI>
@@ -197,7 +202,8 @@ const ArchivoEquivalencia = ({ estado, nArchivo, materiaAprobada }) => {
                         </Grid>
                     )}
                 {nombreArchivo == null &&
-                    (estado == 'Falta completar' || estado == 'Pendiente') && (
+                    (estado == 'Falta completar' || estado == 'Pendiente') &&
+                    rol == 'alumno' && (
                         <Grid
                             item
                             container
@@ -207,9 +213,9 @@ const ArchivoEquivalencia = ({ estado, nArchivo, materiaAprobada }) => {
                             alignItems="flex-end"
                         >
                             {/* <label
-                                htmlFor="contained-button-file"
-                                // style={{ width: '100%' }}
-                            > */}
+                            htmlFor="contained-button-file"
+                            style={{ width: '100%' }}
+                            ></label>  */}
 
                             <FileUploader
                                 id="contained-button-file"

@@ -771,7 +771,7 @@ const PageVerEquivalencia = () => {
                                                         </label>*/}
                                                     {/*Agregado */}
                                                     <ArchivoEquivalencia
-                                                        nombreArchivo={
+                                                        nArchivo={
                                                             materiaAprobada.archivo
                                                         }
                                                         estado={equiv.estado}
